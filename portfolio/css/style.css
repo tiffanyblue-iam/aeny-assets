@@ -47,19 +47,36 @@ body::before {
 }
 
 .page {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 40px 96px;
-  position: relative;          /* ▶ 내용이 그리드 위에 올라오도록 */
-  z-index: 1;
+  position: relative;
+  min-height: 100vh;
+  color: var(--text-main);
+  background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.18), #020617);
+  overflow-x: hidden;
 }
 
+/* 고정 격자 오버레이 */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.35;          /* 필요하면 0.3~0.45 사이에서 조절 */
+  mix-blend-mode: soft-light;
+}
 
-/* 페이지 컨텐츠를 그리드 위에 띄우기 */
-.page {
+/* 실제 컨텐츠는 격자 위에 올라오도록 */
+.page-inner,
+.hero,
+.section {
   position: relative;
   z-index: 1;
 }
+
 
 
 
@@ -448,18 +465,19 @@ header {
 
 /* 섹션 전체 */
 .section-growth {
-  margin-top: 72px;
+  margin: 120px auto 0;
 }
 
 .section-growth-inner {
-  max-width: 1180px;
+  max-width: 1160px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
-/* 섹션 상단 텍스트 */
+/* 섹션 상단 텍스트 (헤더) */
 .section-growth-header {
-  max-width: 420px;
-  margin-bottom: 32px;
+  max-width: 460px;
+  margin-bottom: 28px;
 }
 
 .section-growth-header .label {
@@ -467,40 +485,41 @@ header {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .section-growth-header h2 {
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  margin: 0 0 10px;
 }
 
 .section-growth-header p {
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-sub);
 }
 
-/* 보드 컨테이너 */
+/* 성장 보드 컨테이너 */
 .growth-board {
   padding: 40px 32px 36px;
   border-radius: 32px;
   border: 1px solid rgba(15, 23, 42, 0.9);
   background:
-    radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), transparent 55%),
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.20), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), transparent 65%),
     linear-gradient(135deg, #020617, #020617);
   box-shadow:
-    0 32px 80px rgba(15, 23, 42, 0.9),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.8);
+    0 32px 80px rgba(15, 23, 42, 0.95),
+    inset 0 0 0 1px rgba(15, 23, 42, 0.9);
 }
 
 /* 왼쪽 메인 보드 + 오른쪽 카드 그리드 */
 .growth-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px;
   align-items: flex-start;
 }
 
@@ -509,11 +528,11 @@ header {
 .growth-main {
   border-radius: 24px;
   padding: 20px 20px 18px;
-  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), #020617);
-  border: 1px solid rgba(74, 222, 128, 0.5);
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.32), #020617);
+  border: 1px solid rgba(74, 222, 128, 0.6);
   box-shadow:
     0 0 40px rgba(34, 197, 94, 0.45),
-    0 24px 60px rgba(15, 23, 42, 0.9);
+    0 24px 60px rgba(15, 23, 42, 0.95);
 }
 
 .growth-main-label {
@@ -525,7 +544,7 @@ header {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   background: rgba(3, 7, 18, 0.9);
-  border: 1px solid rgba(187, 247, 208, 0.7);
+  border: 1px solid rgba(187, 247, 208, 0.8);
   color: var(--text-sub);
   margin-bottom: 12px;
 }
@@ -570,9 +589,9 @@ header {
   position: relative;
   border-radius: 18px;
   padding: 14px 14px 12px;
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.85), #020617);
-  border: 1px solid rgba(30, 64, 175, 0.6);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617);
+  border: 1px solid rgba(30, 64, 175, 0.7);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
   overflow: hidden;
   transition:
     transform 0.16s ease-out,
@@ -584,15 +603,15 @@ header {
   content: "";
   position: absolute;
   inset: -30%;
-  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 60%);
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.21), transparent 60%);
   opacity: 0;
   transition: opacity 0.18s ease-out;
 }
 
 .growth-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.9);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+  border-color: rgba(56, 189, 248, 1);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.98);
 }
 
 .growth-card:hover::after {
@@ -620,37 +639,29 @@ header {
 
 /* Placeholder (한 번만 정의) */
 .placeholder {
-  margin-top: 60px;
+  margin: 80px auto 0;
+  max-width: 640px;
+  text-align: center;
   font-size: 13px;
   color: #6b7280;
 }
 
-/* 반응형 */
+/* ===== 반응형 ===== */
+
 @media (max-width: 960px) {
   .section-growth-inner {
     padding-inline: 0;
   }
 
   .growth-board {
-    padding-inline: 20px;
+    padding: 28px 20px 26px;
   }
 
   .growth-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
   }
-}
 
-@media (max-width: 640px) {
-  .growth-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-
-/* ===== 반응형 ===== */
-
-@media (max-width: 960px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding: 28px 20px 26px;
@@ -665,14 +676,6 @@ header {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
-  }
-  .section-levers {
-    padding-inline: 20px;
-  }
-
-  .levers-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
   }
 }
 
@@ -702,9 +705,8 @@ header {
   .portal {
     max-width: 320px;
   }
-    .levers-grid {
+
+  .growth-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-
 }
-
