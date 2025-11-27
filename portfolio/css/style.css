@@ -37,7 +37,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.22;               
+  opacity: 0.25;               
 
   /* 40px 간격 격자 */
   background-image:
