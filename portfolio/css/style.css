@@ -477,40 +477,57 @@ header {
   margin: 0 auto;
 }
 
-/* 헤더 레이아웃: 좌 타이틀, 우 설명 */
+/* 성장 보드 헤더 – 영문 큰 타이틀 + 우측 설명 */
 .section-growth-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
+  align-items: flex-end;
+  gap: 56px;
   margin-bottom: 32px;
 }
 
-.growth-header-left {
+/* 좌측: GROWTH BOARD */
+.growth-header-word {
+  flex: 1;
   max-width: 520px;
 }
 
 .growth-kicker {
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.growth-word {
+  font-size: 52px;          /* 크게 꽝 */
+  letter-spacing: 0.22em;   /* 기계식 느낌 넓은 자간 */
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+/* 우측: 한글 타이틀 + 설명 */
+.growth-header-right {
+  flex: 1;
+  max-width: 420px;
+  text-align: right;
+}
+
+.growth-title-kr {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   margin-bottom: 8px;
 }
 
-.growth-title {
-  font-size: 24px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-}
-
-.growth-header-right {
-  max-width: 360px;
+.growth-desc {
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-sub);
-  text-align: right;
 }
+
 
 /* 보드 전체 박스 */
 .growth-board {
@@ -692,6 +709,10 @@ header {
   .growth-header-right {
     text-align: left;
     max-width: none;
+  }
+
+  .growth-word {
+    font-size: 36px;  /* 모바일에서 조금 줄이기 */
   }
 
   .growth-board {
