@@ -519,6 +519,13 @@ header {
     align-items: flex-start;
     gap: 6px;
   }
+  .section-levers {
+    padding: 28px 20px 24px;
+  }
+
+  .levers-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -547,5 +554,9 @@ header {
   .portal {
     max-width: 320px;
   }
+    .levers-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
 }
 
