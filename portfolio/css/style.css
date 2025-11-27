@@ -465,69 +465,72 @@ header {
 }
 
 /* ===========================
-   2. ALL GROWTH LEVERS 섹션
+   2-2. ALL GROWTH LEVERS
    =========================== */
 
-/* 섹션 전체 래퍼 */
+/* 섹션 컨테이너 */
 .section-growth {
-  margin-top: 96px;
+  margin: 96px auto 0;
+  max-width: 1180px;
 }
 
 .section-growth-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-
-  /* 헤드라인(좌) + 보드(우) 2단 레이아웃 */
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 36px;
-  align-items: flex-start;
+  padding-inline: 4px;
 }
 
-/* 왼쪽 헤드라인 */
+/* 헤더 영역 (ALL GROWTH LEVERS + 제목 + 설명) */
 .section-growth-header {
-  max-width: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1.6fr) minmax(0, 1.4fr);
+  column-gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 32px;
 }
 
+/* 왼쪽 세로 라벨: ALL GROWTH LEVERS */
 .section-growth-header .label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 16px;
 }
 
+/* 중앙 큰 제목 (브랜드·조직·마케팅…) */
 .section-growth-header h2 {
   font-size: 22px;
-  line-height: 1.55;
+  line-height: 1.6;
   letter-spacing: -0.02em;
-  margin-bottom: 14px;
 }
 
+/* 오른쪽 설명 텍스트 */
 .section-growth-header p {
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-sub);
 }
 
-/* 오른쪽 보드 전체 카드 */
+/* 메인 보드 전체 박스 */
 .growth-board {
+  margin-top: 12px;
   padding: 40px 32px 36px;
   border-radius: 32px;
   border: 1px solid rgba(15, 23, 42, 0.9);
   background:
-    radial-gradient(circle at top left, rgba(22, 163, 74, 0.20), transparent 55%),
+    radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), transparent 55%),
     linear-gradient(135deg, #020617, #020617);
   box-shadow:
     0 32px 80px rgba(15, 23, 42, 0.9),
     inset 0 0 0 1px rgba(15, 23, 42, 0.8);
 }
 
-/* 왼쪽 메인 보드 + 오른쪽 6개 카드 */
+/* 왼쪽 메인 보드 + 오른쪽 6개 카드 레이아웃 */
 .growth-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
-  gap: 28px;
+  column-gap: 28px;
   align-items: flex-start;
 }
 
@@ -585,7 +588,7 @@ header {
   color: var(--accent);
 }
 
-/* ===== 오른쪽 6개 카드 그리드 ===== */
+/* ===== 오른쪽 6개 카드 ===== */
 
 .growth-grid {
   display: grid;
@@ -645,7 +648,8 @@ header {
   color: var(--text-muted);
 }
 
-/* Placeholder (텍스트 안내) */
+/* ===== Placeholder (텍스트만 있는 맨 아래 설명) ===== */
+
 .placeholder {
   margin-top: 60px;
   font-size: 13px;
@@ -654,15 +658,18 @@ header {
 
 /* ===== 반응형 ===== */
 
-@media (max-width: 1040px) {
+@media (max-width: 960px) {
+  .section-growth {
+    margin-top: 72px;
+  }
+
   .section-growth-inner {
-    display: block;
-    padding-inline: 0;
+    padding-inline: 20px;
   }
 
   .section-growth-header {
-    max-width: 420px;
-    margin-bottom: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 12px;
   }
 
   .growth-board {
@@ -671,7 +678,7 @@ header {
 
   .growth-layout {
     grid-template-columns: minmax(0, 1fr);
-    gap: 22px;
+    row-gap: 20px;
   }
 }
 
@@ -680,3 +687,4 @@ header {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
