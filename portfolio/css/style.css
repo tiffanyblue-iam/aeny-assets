@@ -442,9 +442,14 @@ header {
   color: var(--text-sub);
 }
 
-/* All growth levers 섹션 */
+/* ===========================
+   ALL GROWTH LEVERS 섹션
+   =========================== */
 
+/* 섹션 전체(보드) 컨테이너 */
 .section-levers {
+  max-width: 1180px;                         /* 히어로 카드와 비슷한 폭 */
+  margin: 0 auto;                            /* 화면 가운데 정렬 */
   padding: 40px 32px 36px;
   border-radius: 32px;
   border: 1px solid rgba(15, 23, 42, 0.9);
@@ -454,16 +459,18 @@ header {
   box-shadow:
     0 32px 80px rgba(15, 23, 42, 0.9),
     inset 0 0 0 1px rgba(15, 23, 42, 0.8);
+  position: relative;
 }
 
+/* 왼쪽 메인 카드 + 오른쪽 카드 그리드 레이아웃 */
 .levers-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
   gap: 28px;
   align-items: flex-start;
 }
 
-/* 메인 카드 */
+/* ===== 메인 카드 ===== */
 
 .levers-main-card {
   border-radius: 24px;
@@ -497,6 +504,8 @@ header {
 
 .levers-main-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-sub);
@@ -508,7 +517,8 @@ header {
   color: var(--accent);
 }
 
-/* 개별 레버 카드 그리드 */
+
+/* ===== 오른쪽 개별 레버 카드 그리드 ===== */
 
 .levers-grid {
   display: grid;
@@ -524,7 +534,10 @@ header {
   border: 1px solid rgba(30, 64, 175, 0.6);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
   overflow: hidden;
-  transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out;
+  transition:
+    transform 0.16s ease-out,
+    box-shadow 0.16s ease-out,
+    border-color 0.16s ease-out;
 }
 
 .lever-card::after {
@@ -565,7 +578,7 @@ header {
   color: var(--text-muted);
 }
 
-/* 기존 placeholder 섹션 */
+/* ===== Placeholder (한 번만 정의) ===== */
 
 .placeholder {
   margin-top: 60px;
@@ -574,16 +587,7 @@ header {
 }
 
 
-
-/* Placeholder 섹션 */
-
-.placeholder {
-  margin-top: 60px;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-/* 반응형 */
+/* ===== 반응형 ===== */
 
 @media (max-width: 960px) {
   .hero {
@@ -602,11 +606,12 @@ header {
     gap: 6px;
   }
   .section-levers {
-    padding: 28px 20px 24px;
+    padding-inline: 20px;
   }
 
   .levers-layout {
     grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 }
 
