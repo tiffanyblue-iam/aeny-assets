@@ -507,7 +507,7 @@ header {
 }
 
 .growth-header-right {
-  max-width: 320px;
+  /*max-width: 320px;*/
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-sub);
