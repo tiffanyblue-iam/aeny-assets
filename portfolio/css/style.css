@@ -506,7 +506,7 @@ header {
   font-size: 13px;
   line-height: 1.7;
   color: var(--text-sub);
-  max-width: 380px;
+  /*max-width: 380px;*/
   text-align: right;
 }
 
