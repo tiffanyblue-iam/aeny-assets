@@ -37,7 +37,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.18;               /* 너무 약하면 0.2~0.25까지 올려도 됨 */
+  opacity: 0.22;               
 
   /* 40px 간격 격자 */
   background-image:
@@ -446,10 +446,45 @@ header {
    ALL GROWTH LEVERS 섹션
    =========================== */
 
-/* 섹션 전체(보드) 컨테이너 */
-.section-levers {
-  max-width: 1180px;                         /* 히어로 카드와 비슷한 폭 */
-  margin: 0 auto;                            /* 화면 가운데 정렬 */
+/* 섹션 전체 */
+.section-growth {
+  margin-top: 72px;
+}
+
+.section-growth-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* 섹션 상단 텍스트 */
+.section-growth-header {
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+
+.section-growth-header .label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.section-growth-header h2 {
+  font-size: 22px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-growth-header p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+/* 보드 컨테이너 */
+.growth-board {
   padding: 40px 32px 36px;
   border-radius: 32px;
   border: 1px solid rgba(15, 23, 42, 0.9);
@@ -459,20 +494,19 @@ header {
   box-shadow:
     0 32px 80px rgba(15, 23, 42, 0.9),
     inset 0 0 0 1px rgba(15, 23, 42, 0.8);
-  position: relative;
 }
 
-/* 왼쪽 메인 카드 + 오른쪽 카드 그리드 레이아웃 */
-.levers-layout {
+/* 왼쪽 메인 보드 + 오른쪽 카드 그리드 */
+.growth-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
   gap: 28px;
   align-items: flex-start;
 }
 
-/* ===== 메인 카드 ===== */
+/* ===== 왼쪽 메인 보드 ===== */
 
-.levers-main-card {
+.growth-main {
   border-radius: 24px;
   padding: 20px 20px 18px;
   background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), #020617);
@@ -482,7 +516,7 @@ header {
     0 24px 60px rgba(15, 23, 42, 0.9);
 }
 
-.levers-main-pill {
+.growth-main-label {
   display: inline-flex;
   align-items: center;
   padding: 4px 10px;
@@ -496,13 +530,20 @@ header {
   margin-bottom: 12px;
 }
 
-.levers-main-text {
+.growth-main h3 {
   font-size: 14px;
   line-height: 1.7;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.levers-main-list {
+.growth-main p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-sub);
+  margin-bottom: 10px;
+}
+
+.growth-main ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -511,22 +552,21 @@ header {
   color: var(--text-sub);
 }
 
-.levers-main-list li::before {
+.growth-main ul li::before {
   content: "•";
   margin-right: 6px;
   color: var(--accent);
 }
 
+/* ===== 오른쪽 6개 카드 그리드 ===== */
 
-/* ===== 오른쪽 개별 레버 카드 그리드 ===== */
-
-.levers-grid {
+.growth-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.lever-card {
+.growth-card {
   position: relative;
   border-radius: 18px;
   padding: 14px 14px 12px;
@@ -540,7 +580,7 @@ header {
     border-color 0.16s ease-out;
 }
 
-.lever-card::after {
+.growth-card::after {
   content: "";
   position: absolute;
   inset: -30%;
@@ -549,41 +589,62 @@ header {
   transition: opacity 0.18s ease-out;
 }
 
-.lever-card:hover {
+.growth-card:hover {
   transform: translateY(-3px);
   border-color: rgba(56, 189, 248, 0.9);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
 }
 
-.lever-card:hover::after {
+.growth-card:hover::after {
   opacity: 1;
 }
 
-.lever-label {
+.growth-card-title {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-main);
   margin-bottom: 6px;
 }
 
-.lever-text {
+.growth-card-body {
   font-size: 12px;
   line-height: 1.6;
   color: var(--text-sub);
   margin-bottom: 8px;
 }
 
-.lever-meta {
+.growth-card-meta {
   font-size: 11px;
   color: var(--text-muted);
 }
 
-/* ===== Placeholder (한 번만 정의) ===== */
-
+/* Placeholder (한 번만 정의) */
 .placeholder {
   margin-top: 60px;
   font-size: 13px;
   color: #6b7280;
+}
+
+/* 반응형 */
+@media (max-width: 960px) {
+  .section-growth-inner {
+    padding-inline: 0;
+  }
+
+  .growth-board {
+    padding-inline: 20px;
+  }
+
+  .growth-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .growth-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 
