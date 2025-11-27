@@ -480,17 +480,20 @@ header {
 /* 성장 보드 헤더 – 영문 큰 타이틀 + 우측 설명 */
 .section-growth-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;   /* space-between → flex-start 로 변경 */
   align-items: flex-end;
   gap: 56px;
   margin-bottom: 32px;
 }
 
-/* 좌측: GROWTH BOARD */
-.growth-header-word {
+/* 우측: 한글 타이틀 + 설명 */
+.growth-header-right {
   flex: 1;
-  max-width: 520px;
+  max-width: 420px;
+  text-align: right;
+  display: none;                 /* ← 이 줄 추가: 오른쪽 블록 숨기기 */
 }
+
 
 .growth-kicker {
   font-size: 11px;
