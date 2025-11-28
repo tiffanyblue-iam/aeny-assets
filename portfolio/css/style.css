@@ -240,6 +240,13 @@ header {
   letter-spacing: -0.02em;
 }
 
+/* 히어로 왼쪽 텍스트 컬럼을 위로 붙이기 */
+.hero > div:first-child {
+  align-self: flex-start;
+  margin-top: 10px; 
+}
+
+
 .hero-label,
 .badge,
 .hero-meta-tag {
