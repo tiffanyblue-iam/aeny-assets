@@ -165,35 +165,85 @@ header {
   box-shadow:
     0 40px 120px rgba(15, 23, 42, 0.9),
     inset 0 0 0 1px rgba(148, 163, 184, 0.15);
-  /* 상단 패딩 줄여서 타이틀을 박스 상단으로 끌어올림 */
-  padding: 28px 40px 40px;
+  /* ⬇ 안쪽에서 텍스트가 조금 더 위에 붙고, 아래는 여유 있게 보이도록 조정 */
+  padding: 32px 40px 44px;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 40px;
-  /* 양쪽 콘텐츠를 위쪽 기준으로 정렬 */
+  column-gap: 40px;
+  row-gap: 32px;
+  /* ⬇ 가운데 정렬 → 위쪽 정렬 */
   align-items: flex-start;
 }
 
-/* 왼쪽 텍스트 */
+/* 상단 영어 키워드 히어로 (Weavy 스타일) */
+.hero-super {
+  margin: 40px 0 24px;
+  text-align: center;
+}
 
+.hero-super-kicker {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.75);
+  margin-bottom: 12px;
+}
+
+.hero-super-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.hero-super-main {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: clamp(46px, 9vw, 76px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.hero-super-sub {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 3vw, 26px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.85);
+  white-space: nowrap;
+}
+
+/* 왼쪽 텍스트 영역 */
 .hero-label {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
-  /* 라벨과 타이틀 사이 간격 살짝 줄여서 전체 블록을 더 위로 */
-  margin-bottom: 10px;
+  /* ⬇ 라벨과 타이틀 사이 여백 살짝 늘림 */
+  margin-bottom: 20px;
 }
 
 .hero-title {
   font-size: clamp(28px, 3vw, 34px);
   line-height: 1.3;
-  /* 타이틀 아래 여백을 넉넉하게 */
+  /* ⬇ 타이틀 아래 여백도 조금 늘려서 덜 조잡하게 */
   margin-bottom: 20px;
   font-weight: 700;
   font-family: "Space Grotesk", "Noto Sans KR", system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: -0.02em;
+}
+
+.hero-label,
+.badge,
+.hero-meta-tag {
+  font-weight: 500;
 }
 
 .hero-title span {
@@ -204,8 +254,8 @@ header {
   font-size: 14px;
   line-height: 1.7;
   color: var(--text-sub);
-  /* 서브 문장과 인용문 사이 여백 */
-  margin-bottom: 18px;
+  /* ⬇ 본문과 인용 사이도 여유 있게 */
+  margin-bottom: 22px;
   max-width: 420px;
 }
 
@@ -214,7 +264,6 @@ header {
   color: var(--text-muted);
   padding-left: 12px;
   border-left: 2px solid rgba(148, 163, 184, 0.4);
-  /* 인용문과 버튼 사이 여백 조금 더 */
   margin-bottom: 30px;
 }
 
@@ -222,8 +271,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  /* 버튼 그룹 아래 여백도 살짝 늘림 */
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -283,14 +331,12 @@ header {
   color: var(--text-sub);
 }
 
-
 /* 오른쪽 비주얼 */
-
 .hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* 이미지도 위쪽에 맞추기 */
 }
 
 .portal {
